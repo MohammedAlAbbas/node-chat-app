@@ -99,7 +99,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         const user = UserUtility.removeUser(socket.id);
         if (user) {
-            io.emit('system_message', {
+            io.to(user.room).emit('system_message', {
                 message: `${user.displayName} has left!`,
                 date: new Date().getTime()
             });
