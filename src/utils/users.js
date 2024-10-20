@@ -2,7 +2,7 @@ const users = [];
 
 const addUser = ({id, displayName, room}) => {
     const userName = displayName?.trim().toLowerCase();
-    room?.trim().toLowerCase();
+    room?.toLowerCase();
 
     if(!userName || !room) {
         return {

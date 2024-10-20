@@ -17,7 +17,7 @@ createApp({
         });
 
         this.displayName = displayName;
-        this.room = room;
+        this.room = room.toLowerCase();
 
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.dropdown-trigger');
