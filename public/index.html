@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+    <div id="app">
+        <form class="login-form" action="/chat.html">
+            <h4 style="color: #26a69a"><i class="material-icons small" style="margin-right: 10px;">chat</i>CHAT APP</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="displayNameInput" name="displayName" type="text" class="validate" required>
+                    <label for="displayNameInput">Display Name</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">home</i>
+                    <input id="roomInput" name="room" type="text" class="validate" required>
+                    <label for="roomInput">Room</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Join
+                <i class="material-icons right">send</i>
+            </button>
+
+        </form>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/libs/moment.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+
+</html>

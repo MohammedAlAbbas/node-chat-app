@@ -1,0 +1,115 @@
+[v-cloak] {
+    display: none;
+  }
+body {
+    background: #F2F5F8 !important;
+}
+.header {
+    color: #26a69a;
+    text-align: center;
+    border-bottom: 3px solid white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box
+}
+.chat-body {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 160px);
+}
+.msg-form-container {
+    position: fixed;
+    width: 100%;
+    background: #F2F5F8;
+    bottom: 0;
+    box-sizing: border-box;
+    padding-top: 1em;
+    padding-left: 2em;
+    border-top: 2px solid white;
+}
+.msg-txt-field {
+    background: white !important;
+    box-sizing: border-box !important;
+    padding: 1rem !important;
+    border-radius: 5px !important;
+    border-bottom: 1px solid white !important;
+}
+.message-info {
+    color: #ccc;
+    margin-left: 15px;
+    box-sizing: border-box;
+}
+.message-box {
+    padding: 15px;
+    margin: 15px;
+    margin-top: 0;
+    max-width: 80vw;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 1.2em !important;
+    position: relative;
+}
+.message-box.me:before{
+    position: absolute;
+    /* top: 57%; */
+    height: 0;
+    width: 0;
+    left: -18px;
+    border: 10px solid transparent;
+    border-right-color: #86BB71;
+    content: "";
+  }
+  .message-box.other:before{
+    position: absolute;
+    /* top: 57%; */
+    height: 0;
+    width: 0;
+    right: -18px;
+    border: 10px solid transparent;
+    border-left-color: #94C2ED;
+    content: "";
+  }
+.me {
+    background-color: #86BB71;
+    color: white;
+}
+.other {
+    background-color: #94C2ED;
+    color: white;
+    float: right;
+}
+.guest-message {
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+.guest-message .message-info {
+    margin-right: 15px;
+}
+.system-message {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    height: 100vh;
+    background-color: #F2F5F8;
+}
+.connected-users-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+.connected-users-room {
+    text-transform: uppercase;
+    color: #26a69a
+}

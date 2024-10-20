@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="header">
+            <h4><i class="material-icons small" style="margin-right: 10px;">chat</i>CHAT APP</h4>
+            <!-- <div>
+                <div>Typing...</div>
+                <div class="progress" width="100px">
+                    <div class="indeterminate"></div>
+                </div>
+            </div> -->
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn-floating waves-effect waves-light' href='#' data-target='dropdown1'><i
+                    class="material-icons">apps</i></a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a v-on:click="shareLocation"><i class="material-icons">location_on</i>Share Location</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a v-on:click="showConnectedUsersModal"><i class="material-icons">people</i>Connected Users</a></li>
+            </ul>
+        </div>
+        <div class="chat-body" ref="messagesContainer">
+            <section v-for="message in messages">
+                <div class="system-message" v-if="message.sender === 'system'">
+                    <div class="message-info">
+                        System | {{message.date}}
+                    </div>
+                    <div class="message-info">
+                        {{message.text}}
+                    </div>
+                </div>
+                <div v-else-if="message.sender === 'me'">
+                    <div class="message-info">
+                        <span style="color: #86BB71; font-weight: bold;">Me </span> | {{message.date}}
+                    </div>
+                    <div class="message-box me">
+                        <div v-if="message.type === 'location'">
+                            <a class="btn-meduim waves-effect waves-light" v-bind:href="message.text"
+                                v-if="message.type === 'location'">
+                                <img src="/img/location.png" width="200px" height="200px" />
+                            </a>
+                        </div>
+                        <div v-else>
+                            {{message.text}}
+                        </div>
+                    </div>
+                </div>
+                <div class="guest-message" v-else>
+                    <div>
+                        <div class="message-info">
+                            <span style="color: #94C2ED; font-weight: bold;">{{message.displayName}}</span> |
+                            {{message.date}}
+                        </div>
+                        <div class="message-box other">
+                            <div v-if="message.type === 'location'">
+                                <a class="btn-meduim waves-effect waves-light" v-bind:href="message.text"
+                                    v-if="message.type === 'location'">
+                                    <img src="/img/location.png" width="200px" height="200px" />
+                                </a>
+                            </div>
+                            <div v-else>
+                                {{message.text}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="msg-form-container">
+            <div class="row">
+                <input placeholder="Message" class="input-field col s10 m11 msg-txt-field" type="text" id="messageInput"
+                    v-model="messageValue" @keyup.enter="sendMessage()" />
+                <div class=" col s2 m1">
+                    <button id="sendMessageBtn" class="btn-floating btn-meduim waves-effect waves-light"
+                        v-on:click="sendMessage"><i class="material-icons">send</i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Connected Users Modal -->
+        <div id="connectedUsersModal" class="modal bottom-sheet" style="max-height: 75%;">
+            <div class="modal-content">
+                <h4>Connected Users</h4>
+                <h5>Room: <span class="connected-users-room">{{roomData?.room}}</span></h5>
+                <ul class="collection connected-users-list">
+                    <li class="collection-item avatar" v-for="user in roomData.users">
+                      <i class="material-icons circle green">person</i>
+                      <span class="title">{{user.displayName}}</span>
+                      <p>Connected 
+                      </p>
+                    </li>
+                  </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-green btn-flat">Close</button>
+            </div>
+        </div>
+         <!-- # End of Connected Users Modal -->
+
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/libs/moment.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+
+</html>
