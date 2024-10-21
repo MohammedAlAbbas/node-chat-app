@@ -15,23 +15,19 @@ body {
     justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
-    box-sizing: border-box;
-    position: sticky;
-    top: 0;
 }
 .chat-body {
     box-sizing: border-box;
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
-    top: 3px;
     height: calc(100vh - 160px);
 }
 .msg-form-container {
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     background: #F2F5F8;
-    bottom: 0;
+    /* bottom: 0; */
     box-sizing: border-box;
     padding-top: 1em;
     padding-left: 2em;
