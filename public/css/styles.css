@@ -28,7 +28,7 @@ body {
     overflow-x: hidden;
     height: calc(100vh - 160px);
     top: 80px;
-    padding-bottom: 2em;
+    padding-bottom: 4em;
 }
 .msg-form-container {
     position: fixed;
